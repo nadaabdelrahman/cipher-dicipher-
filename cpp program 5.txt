@@ -1,0 +1,62 @@
+
+#include <iostream>
+using namespace std;
+
+int main ()
+{
+ int x,num=0;
+ cout<<"ahlan ya user ya habiby"<<"\n";
+ cout<<"what do you like to do today"<<"\n";
+ cout<<"1-cipher a message"<<"\n";
+ cout<<"2-decipher a message"<<"\n";
+ cout <<"enter Your choice"<<"\n";
+ cin>>x;
+ string message;
+ string key;
+ string alpha2;
+ string alpha="abcdefghjklmnopqrstuvxyz";
+ string cipher;
+ cout<<"Enter The Secret Key "<<"\n";
+ cin>>key;
+ cout<<"Enter Your Mesaage"<<"\n";
+ cin.ignore();
+ getline(cin,message);
+  for (int i=0;i<26;i++)
+    {
+
+            if (key[0]!=alpha[i]&&key[1]!=alpha[i]&&key[2]!=alpha[i]&&key[3]!=alpha[i]&&key[4]!=alpha[i])
+            {
+                alpha2+=alpha[i];
+            }
+
+    }
+  cipher=key+alpha2;
+
+  if(x==1)
+  {
+
+    for (int i=0;i<message.length();i++)
+    {
+        message[i]=cipher[message[i]-'a'];
+    }
+  }
+ if (x==2)
+ {
+     for(int i=0;i<message.length();i++)
+     {
+         num=0;
+
+         for(int j=0;j<26;j++)
+         {
+             if (cipher[j]==message[i])
+             {
+                 break;
+             }
+             num++;
+         }
+         message[i]=alpha[num];
+     }
+ }
+ cout<<"YOUR MESSAGE IS ;"<<"\n"<<message;
+ return 0;
+}
